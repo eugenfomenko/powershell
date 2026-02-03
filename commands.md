@@ -50,3 +50,29 @@
 `-ne --> Vergleicht auf Ungleichheit`
 `-gt --> Prüft, ob größer als`
 `-lt --> Prüft, ob kleiner als`
+
+##### **ssh -V** --> `SSH-Client aktivieren`
+##### **Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0** --> `SSH-Client installieren (falls fehlt)`
+##### **Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*'** --> `Prüfen:`
+##### **Start-Service sshd**
+##### **Set-Service -Name sshd -StartupType Automatic** --> `SSH-Client aktivieren`
+##### **Get-Service sshd** --> `Prüfen:`
+##### **Get-NetFirewallRule -Name *OpenSSH-Server* -ErrorAction SilentlyContinue** --> `Firewall-Regel aktivieren (Port 22)`
+##### **New-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -DisplayName "OpenSSH Server (sshd)" -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22** --> `Wenn nichts kommt, dann Regel setzen:`
+##### **Get-NetTCPConnection -LocalPort 22 -State Listen** --> `Test: Lauscht der Server auf Port 22?`
+##### `oder`
+##### **netstat -ano | findstr ":22"** 
+##### **ipconfig** --> `IP auf deinem Windows-PC anzeigen:`
+##### **Restart-Service sshd** --> `Nach Änderungen Dienst neu starten:`
+
+##### **Typische Stolpersteine** --> 
+`PC in Domäne / Firmen-Netz: Firewall/Policies können Port 22 blocken.`
+`NAT/Router: Von „Internet“ geht’s nur mit Port-Forwarding (zu Hause).`
+`Nur im LAN testen: Erst lokal, dann extern.`
+
+
+
+
+
+
+
