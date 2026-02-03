@@ -67,7 +67,9 @@
 
 ##### **Typische Stolpersteine** --> 
 `PC in Domäne / Firmen-Netz: Firewall/Policies können Port 22 blocken.`
+
 `NAT/Router: Von „Internet“ geht’s nur mit Port-Forwarding (zu Hause).`
+
 `Nur im LAN testen: Erst lokal, dann extern.`
 
 
